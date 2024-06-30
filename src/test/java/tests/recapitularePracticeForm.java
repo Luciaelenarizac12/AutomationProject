@@ -1,10 +1,9 @@
-package Tests;
+package tests;
 
-import HelperMethods.ElementsMethods;
-import HelperMethods.PageMethods;
+import helperMethods.ElementsMethods;
+import helperMethods.PageMethods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

@@ -1,9 +1,8 @@
-package Tests;
+package tests;
 
-import HelperMethods.ElementsMethods;
-import HelperMethods.PageMethods;
+import helperMethods.ElementsMethods;
+import helperMethods.PageMethods;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;

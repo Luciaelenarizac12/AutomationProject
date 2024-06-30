@@ -1,14 +1,10 @@
-package Tests;
+package tests;
 
-import HelperMethods.AlertMethods;
-import HelperMethods.ElementsMethods;
-import HelperMethods.PageMethods;
-import com.beust.ah.A;
+import helperMethods.AlertMethods;
+import helperMethods.ElementsMethods;
+import helperMethods.PageMethods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
