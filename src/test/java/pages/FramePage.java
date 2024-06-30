@@ -47,7 +47,7 @@ public class FramePage {
 
 
     public void navigateToNestedFrames(){
-        pageMethods.scrollPage(0,100);
+        pageMethods.scrollPage(0,350);
         elementMethods.clickElement(nestedFrames);
     }
 

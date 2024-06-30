@@ -31,6 +31,6 @@ public class NestedFramePage {
     public void interactWithNestedFrame(){
         frameMethods.switchtoFrame("frame1");
         frameMethods.switchtoFrame(childFrame);
-        System.out.println(childFrame.getText());
+        System.out.println(text.getText());
     }
 }

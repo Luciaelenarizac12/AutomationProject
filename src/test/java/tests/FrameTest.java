@@ -27,14 +27,15 @@ public class FrameTest {
 
         driver.get("https://demoqa.com/");
 
+        //definim un wait implicit
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         AlertsFrameWindows homePage=new AlertsFrameWindows(driver);
         homePage.navigateToHomePage();
 
         BrowserWindowPage browserWindowPage=new BrowserWindowPage(driver);
         browserWindowPage.navigateToBrowserWindowPage();
         browserWindowPage.navigateToFrames();
-
-
 
         FramePage framePage=new FramePage(driver);
         framePage.interactWithBigFrame();
@@ -44,10 +45,8 @@ public class FrameTest {
         NestedFramePage nestedFramePage=new NestedFramePage(driver);
         nestedFramePage.interactWithNestedFrame();
 
+        driver.quit();
 
-
-        //definim un wait implicit
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 //        WebElement formMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
 ////        formMenu.click();
