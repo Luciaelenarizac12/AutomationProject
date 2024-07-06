@@ -1,14 +1,9 @@
 package tests;
 
-import helperMethods.ElementsMethods;
-import helperMethods.FrameMethods;
-import helperMethods.PageMethods;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
-import pages.AlertsFrameWindows;
+import pages.HomePage;
 import pages.BrowserWindowPage;
 import pages.FramePage;
 import pages.NestedFramePage;
@@ -30,7 +25,7 @@ public class FrameTest {
         //definim un wait implicit
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        AlertsFrameWindows homePage=new AlertsFrameWindows(driver);
+        HomePage homePage=new HomePage(driver);
         homePage.navigateToHomePage();
 
         BrowserWindowPage browserWindowPage=new BrowserWindowPage(driver);

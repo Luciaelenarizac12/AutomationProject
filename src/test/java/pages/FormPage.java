@@ -7,25 +7,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AlertsFrameWindows {
+public class FormPage {
     public WebDriver driver; //avem nevoie de un driver
     public ElementsMethods elementMethods;
     public PageMethods pageMethods;
 
-
-    public AlertsFrameWindows(WebDriver driver) { //constructorul
+    public FormPage(WebDriver driver) {
         this.driver = driver;
         pageMethods = new PageMethods(driver);
         elementMethods = new ElementsMethods (driver);
         PageFactory.initElements(driver, this);
     }
-    @FindBy(xpath = "//h5[text()='Alerts, Frame & Windows']") //anotare gen porecla
-    public WebElement formMenu; //am transformat-o in variabila globala
 
-    public void navigateToHomePage(){
-        pageMethods.scrollPage(0,350);
-        elementMethods.clickElement(formMenu);
+    @FindBy(xpath = "//div[@class='col-12 mt-4  col-md-3']/div/div/div/div[@class='element-list collapse show']/ul/li/span[text()='Practice Form']")
+    WebElement practiceForm;
+
+    public void navigateToPracticeForm(){
+        elementMethods.clickElement(practiceForm);
     }
-
-
 }

@@ -1,16 +1,11 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.BrowserWindowPage;
-import pages.AlertsFrameWindows;
+import pages.HomePage;
 import pages.WindowsPage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class WindowTest {
     @Test
@@ -23,7 +18,7 @@ public class WindowTest {
 
         driver.manage().window().maximize();
 
-        AlertsFrameWindows homePage=new AlertsFrameWindows(driver);
+        HomePage homePage=new HomePage(driver);
         homePage.navigateToHomePage();
 
         BrowserWindowPage browserWindowPage=new BrowserWindowPage(driver);

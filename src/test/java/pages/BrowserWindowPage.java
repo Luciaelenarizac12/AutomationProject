@@ -26,16 +26,32 @@ public class BrowserWindowPage {
     @FindBy(xpath = "//span[text()='Frames']")
     public WebElement frameButton;
 
+    @FindBy(xpath = "//span[text()='Alerts']")
+    WebElement alertsButton;
+
+    @FindBy(xpath = "//span[text()='Web Tables']")
+    WebElement webTableSubmenu;
+
 
     public void navigateToBrowserWindowPage(){
-        pageMethods.scrollPage(0,100);
+        pageMethods.scrollPage(0,150);
         elementMethods.clickElement(browserWindows);
 
     }
-
     public void navigateToFrames(){
-        pageMethods.scrollPage(0,100);
+        pageMethods.scrollPage(0,150);
         elementMethods.clickElement(frameButton);
+    }
+
+    public void navigateToAlerts(){
+        pageMethods.scrollPage(0,350);
+        elementMethods.clickElement(alertsButton);
+    }
+
+
+    public void navigateToWebTable(){
+        pageMethods.scrollPage(0,350);
+        elementMethods.clickElement(webTableSubmenu);
     }
 
 
