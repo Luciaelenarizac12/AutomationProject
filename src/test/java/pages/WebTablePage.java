@@ -1,5 +1,6 @@
 package pages;
 
+import objectData.WebTableObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,22 +39,21 @@ public class WebTablePage extends BasePage{
 
 
 
-    public void addEntry(String firstNameValue,String lastNameValue,String emailValue,
-                         String ageValue, String salaryValue,String departmentValue){
+    public void addEntry(WebTableObject testData){
         elementMethods.clickElement(addElement);
-        elementMethods.fillElement(firstnameElement, firstNameValue);
-        elementMethods.fillElement(lastnameElement,lastNameValue);
-        elementMethods.fillElement(emailElement,emailValue);
-        elementMethods.fillElement(ageElement,ageValue);
-        elementMethods.fillElement(salaryElement,salaryValue);
-        elementMethods.fillElement(departmentElement,departmentValue);
+        elementMethods.fillElement(firstnameElement, testData.getFirstNameValue());
+        elementMethods.fillElement(lastnameElement,testData.getLastNameValue());
+        elementMethods.fillElement(emailElement,testData.getEmailValue());
+        elementMethods.fillElement(ageElement,testData.getAgeValue());
+        elementMethods.fillElement(salaryElement,testData.getSalaryValue());
+        elementMethods.fillElement(departmentElement,testData.getDepartmentValue());
         elementMethods.clickElement(submitElement);
     }
 
-    public void changeEntry(String editsalaryValue,String editdepartmentValue){
+    public void changeEntry(WebTableObject testData){
         elementMethods.clickElement(editElement);
-        elementMethods.clearFillElement(editsalaryElement,editsalaryValue);
-        elementMethods.clearFillElement(editdepartmentElement,editdepartmentValue);
+        elementMethods.clearFillElement(editsalaryElement,testData.getEditsalaryValue());
+        elementMethods.clearFillElement(editdepartmentElement,testData.getEditdepartmentValue());
         elementMethods.clickElement(editSubmitElement);
     }
 

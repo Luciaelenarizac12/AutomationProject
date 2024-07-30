@@ -1,0 +1,14 @@
+{
+  "firstNameValue": "Marian",
+  "lastNameValue": "Popescu",
+  "emailValue": "alalal@yahoo.com",
+  "genderValue": "Other",
+  "userNumberValue": "0987654321",
+  "chooseDayValue": "25",
+  "subjectValue": "Social Studies",
+  "activitatiValue": ["Sports", "Reading", "Music"],
+  "terminatiePath": "Exemplu.txt",
+  "userAddressValue": "fsjdbfjkds jfsdfjjdsk fdjj .fjdsnjfk /dsfo",
+  "stateinputValue": "NCR",
+  "cityinputValue": "Delhi"
+}

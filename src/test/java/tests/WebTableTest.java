@@ -1,6 +1,8 @@
 package tests;
 
 import helperMethods.PageMethods;
+import objectData.PracticeFormObject;
+import objectData.WebTableObject;
 import org.testng.annotations.Test;
 import pages.BrowserWindowPage;
 import pages.HomePage;
@@ -14,6 +16,8 @@ public class WebTableTest extends SharedData {
 
     public void metodaTest() {
 
+        WebTableObject testData=new WebTableObject("src/test/resources/testData/WebTable.json");
+
         //Obiecte:
         PageMethods pageMethods=new PageMethods(getDriver());
         pageMethods.scrollPage(0,360);
@@ -24,10 +28,10 @@ public class WebTableTest extends SharedData {
         BrowserWindowPage browserWindowPage=new BrowserWindowPage(getDriver());
         browserWindowPage.navigateToWebTable();
 
+
         WebTablePage webTablePage=new WebTablePage(getDriver());
-        webTablePage.addEntry("Lucia","Rizac","luciarizac@yahoo.com",
-                "28","4000000000","Clinical Trials");
-        webTablePage.changeEntry("90000000000000", "Testare Automata" );
+        webTablePage.addEntry(testData);
+        webTablePage.changeEntry(testData);
         webTablePage.deleteEntry();
 
     }

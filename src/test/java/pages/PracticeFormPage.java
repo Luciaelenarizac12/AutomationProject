@@ -1,5 +1,6 @@
 package pages;
 
+import objectData.PracticeFormObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -76,14 +77,12 @@ public class PracticeFormPage extends  BasePage{
     private List<WebElement> tableValues;
 
 
-    public void fillEntireForm(String firstNameValue,String lastNameValue,String emailValue,String genderValue,
-                               String userNumberValue, String chooseDayValue, String subjectValue,String terminatiePath,
-                               String userAddressValue, String stateinputValue, String cityinputValue, List<String> activitatiValue){
-        elementMethods.fillElement(firstName, firstNameValue);
-        elementMethods.fillElement(lastName,lastNameValue);
-        elementMethods.fillElement(email,emailValue);
+    public void fillEntireForm(PracticeFormObject testData){
+        elementMethods.fillElement(firstName, testData.getFirstNameValue());
+        elementMethods.fillElement(lastName,testData.getLastNameValue());
+        elementMethods.fillElement(email,testData.getEmailValue());
 //        String genderValue = "Other";// e ca si cum deja am bifat din cele 3 una, de asta mi-am facut o variabila in care sa stochez optiunea
-        switch (genderValue) {
+        switch (testData.getGenderValue()) {
             case "Male":
                 listaElementeGender.get(0).click();
                 break;
@@ -95,63 +94,61 @@ public class PracticeFormPage extends  BasePage{
                 break;
 
         }
-        elementMethods.fillElement(userNumber, userNumberValue);
+        elementMethods.fillElement(userNumber, testData.getUserNumberValue());
         pageMethods.scrollPage(0,360);
         elementMethods.clickElement(dateOfBirthElement);
         elementMethods.selectByTextElement(dateOfBirthMonthElement, "January");
         elementMethods.selectByValue(dateOfBirthYearElement, "2100");
 
         for (Integer j=0; j<weekDayElements.size(); j++){
-            if(weekDayElements.get(j).getText().equals(chooseDayValue)){
+            if(weekDayElements.get(j).getText().equals(testData.getChooseDayValue())){
                 weekDayElements.get(j).click();
                 break;
             }
         }
 
-        elementMethods.fillElement(subjects,subjectValue);
+        elementMethods.fillElement(subjects,testData.getSubjectValue());
         elementMethods.pressElement(subjects, Keys.ENTER);
 
 
         for (Integer i = 0; i < listaActivitati.size(); i++) {
             String hobbie = listaActivitati.get(i).getText();
-            if (activitatiValue.contains(hobbie)) {
+            if (testData.getActivitatiValue().contains(hobbie)) {
                 elementMethods.clickJSElement(listaActivitati.get(i));
 
             }
 
         }
 
-        File file = new File("src/test/resources/" + terminatiePath);
+        File file = new File("src/test/resources/" + testData.getTerminatiePath());
         chooseFile.sendKeys(file.getAbsolutePath());
-        elementMethods.fillElement(userAddress,userAddressValue);
+        elementMethods.fillElement(userAddress,testData.getUserAddressValue());
         pageMethods.scrollPage(0,360);
         elementMethods.clickElement(stateElement);
         pageMethods.scrollPage(0,360);
-        elementMethods.fillElement(stateinputElement,stateinputValue);
+        elementMethods.fillElement(stateinputElement,testData.getStateinputValue());
         elementMethods.pressElement(stateinputElement,Keys.ENTER);
         pageMethods.scrollPage(0,360);
         elementMethods.clickElement(cityElement);
-        elementMethods.fillElement(cityinputElement, cityinputValue);
+        elementMethods.fillElement(cityinputElement, testData.getCityinputValue());
         elementMethods.pressElement(cityinputElement,Keys.ENTER);
         pageMethods.scrollPage(0,360);
         elementMethods.clickElement(submitElement);
     }
 
-    public void validateEntireForm(String firstNameValue,String lastNameValue, String emailValue,String genderValue,
-                                   String userNumberValue,String subjectValue, List<String> activitatiValue,
-                                   String terminatiePath, String userAddressValue, String stateinputValue, String cityinputValue){
+    public void validateEntireForm(PracticeFormObject testData){
 
         Assert.assertEquals(confimationSurvey.getText(), "Thanks for submitting the form");
-        Assert.assertEquals(tableValues.get(0).getText(), "Student Name" +" "+ firstNameValue+" "+lastNameValue); //validam stanga-dreapta
-        Assert.assertEquals(tableValues.get(1).getText(), "Student Email" +" "+ emailValue);
-        Assert.assertEquals(tableValues.get(2).getText(), "Gender" +" "+ genderValue);
-        Assert.assertEquals(tableValues.get(3).getText(), "Mobile" +" "+ userNumberValue);
-        Assert.assertEquals(tableValues.get(5).getText(), "Subjects" +" "+ subjectValue);
-        String expectedHobbiesText= "Hobbies "+ String.join(", ", activitatiValue);
+        Assert.assertEquals(tableValues.get(0).getText(), "Student Name" +" "+ testData.getFirstNameValue()+" "+testData.getLastNameValue()); //validam stanga-dreapta
+        Assert.assertEquals(tableValues.get(1).getText(), "Student Email" +" "+ testData.getEmailValue());
+        Assert.assertEquals(tableValues.get(2).getText(), "Gender" +" "+ testData.getGenderValue());
+        Assert.assertEquals(tableValues.get(3).getText(), "Mobile" +" "+ testData.getUserNumberValue());
+        Assert.assertEquals(tableValues.get(5).getText(), "Subjects" +" "+ testData.getSubjectValue());
+        String expectedHobbiesText= "Hobbies "+ String.join(", ", testData.getActivitatiValue());
         Assert.assertEquals(tableValues.get(6).getText(), expectedHobbiesText);
-        Assert.assertEquals(tableValues.get(7).getText(), "Picture" +" "+ terminatiePath);
-        Assert.assertEquals(tableValues.get(8).getText(), "Address" +" "+ userAddressValue);
-        Assert.assertEquals(tableValues.get(9).getText(), "State and City" +" "+ stateinputValue +" "+cityinputValue);
+        Assert.assertEquals(tableValues.get(7).getText(), "Picture" +" "+ testData.getTerminatiePath());
+        Assert.assertEquals(tableValues.get(8).getText(), "Address" +" "+ testData.getUserAddressValue());
+        Assert.assertEquals(tableValues.get(9).getText(), "State and City" +" "+ testData.getStateinputValue() +" "+testData.getCityinputValue());
     }
 
 }

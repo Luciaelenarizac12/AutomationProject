@@ -2,6 +2,7 @@ package tests;
 
 import helperMethods.ElementsMethods;
 import helperMethods.PageMethods;
+import objectData.PracticeFormObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -21,6 +22,10 @@ public class PracticeFormTest extends SharedData {
     @Test
     public void metodaTest() {
 
+        //Pregatim datele de test specifice
+
+        PracticeFormObject testData=new PracticeFormObject("src/test/resources/testData/PracticeFormData.json");
+
         //Obiecte (Refactorizam codul:)
         HomePage homePage=new HomePage(getDriver());
         homePage.navigateToForms();
@@ -28,27 +33,10 @@ public class PracticeFormTest extends SharedData {
         FormPage formPage=new FormPage(getDriver());
         formPage.navigateToPracticeForm();
 
-        String firstNameValue = "Marian";
-        String lastNameValue = "Popescu";
-        String emailValue = "alalal@yahoo.com";
-        String genderValue = "Other";
-        String userNumberValue = "0987654321";
-        String chooseDayValue ="25";
-        String subjectValue = "Social Studies";
-        List<String> activitatiValue = Arrays.asList("Sports", "Reading", "Music");
-        String terminatiePath="Exemplu.txt";
-        String userAddressValue = "fsjdbfjkds jfsdfjjdsk fdjj .fjdsnjfk /dsfo";
-        String stateinputValue = "NCR";
-        String cityinputValue = "Delhi";
-
-
-
         PracticeFormPage practiceFormPage=new PracticeFormPage(getDriver());
-        practiceFormPage.fillEntireForm(firstNameValue,lastNameValue,emailValue,genderValue,userNumberValue,chooseDayValue,subjectValue,
-                terminatiePath, userAddressValue,stateinputValue,cityinputValue, activitatiValue);
+        practiceFormPage.fillEntireForm(testData);
 
-        practiceFormPage.validateEntireForm(firstNameValue, lastNameValue, emailValue, genderValue, userNumberValue, subjectValue,
-                activitatiValue, terminatiePath, userAddressValue, stateinputValue, cityinputValue);
+        practiceFormPage.validateEntireForm(testData);
 
 
     }
