@@ -1,42 +1,34 @@
 package tests;
 
 import helperMethods.PageMethods;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.BrowserWindowPage;
 import pages.HomePage;
 import pages.WebTablePage;
+import sharedData.SharedData;
 
 
-public class WebTableTest {
-
-    public WebDriver driver;
+public class WebTableTest extends SharedData {
 
     @Test
 
     public void metodaTest() {
 
-        driver = new ChromeDriver();
-        driver.get("https://demoqa.com");
-        driver.manage().window().maximize();
         //Obiecte:
-        PageMethods pageMethods=new PageMethods(driver);
+        PageMethods pageMethods=new PageMethods(getDriver());
         pageMethods.scrollPage(0,360);
 
-        HomePage homePage=new HomePage(driver);
+        HomePage homePage=new HomePage(getDriver());
         homePage.navigateToElements();
 
-        BrowserWindowPage browserWindowPage=new BrowserWindowPage(driver);
+        BrowserWindowPage browserWindowPage=new BrowserWindowPage(getDriver());
         browserWindowPage.navigateToWebTable();
 
-        WebTablePage webTablePage=new WebTablePage(driver);
+        WebTablePage webTablePage=new WebTablePage(getDriver());
         webTablePage.addEntry("Lucia","Rizac","luciarizac@yahoo.com",
                 "28","4000000000","Clinical Trials");
         webTablePage.changeEntry("90000000000000", "Testare Automata" );
         webTablePage.deleteEntry();
-
-        driver.quit();
 
     }
 

@@ -6,87 +6,21 @@ import org.testng.annotations.Test;
 import pages.BrowserWindowPage;
 import pages.HomePage;
 import pages.WindowsPage;
+import sharedData.SharedData;
 
-public class WindowTest {
+public class WindowTest extends SharedData {
     @Test
     public void metodaTest() {
-        WebDriver driver;
 
-        driver = new ChromeDriver();
-
-        driver.get("https://demoqa.com/");
-
-        driver.manage().window().maximize();
-
-        HomePage homePage=new HomePage(driver);
+        HomePage homePage=new HomePage(getDriver());
         homePage.navigateToHomePage();
 
-        BrowserWindowPage browserWindowPage=new BrowserWindowPage(driver);
+        BrowserWindowPage browserWindowPage=new BrowserWindowPage(getDriver());
         browserWindowPage.navigateToBrowserWindowPage();
 
-        WindowsPage windowsPage =new WindowsPage(driver);
+        WindowsPage windowsPage =new WindowsPage(getDriver());
         windowsPage.interactWithFirstTab();
         windowsPage.interactWithTheSecondTab();
-
-        driver.quit();
-
-        //Definim un obiect de tipul Window Methods:
-//        WindowMethods windowMethods=new WindowMethods(driver);
-//        ElementsMethods elementMethods = new ElementsMethods (driver);
-//        PageMethods pageMethods = new PageMethods(driver);
-
-        //facem un scroll la pagina pentru vizibilitate:
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("window.scrollBy(0,360)", "");
-//
-//        pageMethods.scrollPage(0,350);
-
-//        WebElement formMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-//        formMenu.click();
-//        elementMethods.clickElement(formMenu);
-
-//        WebElement browserWindows = driver.findElement(By.xpath("//span[text()='Browser Windows']"));
-//        browserWindows.click();
-//        elementMethods.clickElement(browserWindows);
-
-
-        //id="tabButton"
-//        WebElement newTabButton = driver.findElement(By.id("tabButton"));
-////        newTabButton.click();
-//        elementMethods.clickElement(newTabButton);
-//
-//        //interactionam cu un tab/window:
-//
-//        //afisam titlul paginii curente pe care ne aflam:
-////        System.out.println(driver.getTitle());
-//
-//        System.out.println(driver.getCurrentUrl());  //ne afiseaza url ul paginii curente pe care ne aflam
-//
-////        List<String> tabs= new ArrayList<>(driver.getWindowHandles()); // gaseste cate tab uri/ windows uri sunt deschise
-////        driver.switchTo().window(tabs.get(1)); - transformam in comentariu
-//        windowMethods.switchSpecificTab(1);
-//        System.out.println(driver.getCurrentUrl());
-
-        //inchidem tab ul curent
-////        driver.close();
-////        driver.switchTo().window(tabs.get(0)); //la fel
-////        windowMethods.closeCurrentTab();
-//        windowMethods.switchSpecificTab(0);
-//
-//
-//        WebElement newWindow=driver.findElement(By.id("windowButton"));
-////        newWindow.click();
-//        elementMethods.clickElement(newWindow);
-//
-////        List<String> window= new ArrayList<>(driver.getWindowHandles());
-////        driver.switchTo().window(window.get(1));
-//        windowMethods.switchSpecificTab(1);
-//        System.out.println(driver.getCurrentUrl());
-//
-//        //inchidem browserul
-//        windowMethods.closeCurrentTab();
-
-
 
     }
 

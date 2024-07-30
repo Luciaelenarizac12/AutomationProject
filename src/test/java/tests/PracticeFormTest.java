@@ -9,27 +9,23 @@ import org.testng.annotations.Test;
 import pages.FormPage;
 import pages.HomePage;
 import pages.PracticeFormPage;
+import sharedData.SharedData;
 
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-public class PracticeFormTest {
-    public WebDriver driver;
+public class PracticeFormTest extends SharedData {
 
     @Test
     public void metodaTest() {
 
-        driver = new ChromeDriver();
-        driver.get("https://demoqa.com");
-        driver.manage().window().maximize();
-
         //Obiecte (Refactorizam codul:)
-        HomePage homePage=new HomePage(driver);
+        HomePage homePage=new HomePage(getDriver());
         homePage.navigateToForms();
 
-        FormPage formPage=new FormPage(driver);
+        FormPage formPage=new FormPage(getDriver());
         formPage.navigateToPracticeForm();
 
         String firstNameValue = "Marian";
@@ -47,7 +43,7 @@ public class PracticeFormTest {
 
 
 
-        PracticeFormPage practiceFormPage=new PracticeFormPage(driver);
+        PracticeFormPage practiceFormPage=new PracticeFormPage(getDriver());
         practiceFormPage.fillEntireForm(firstNameValue,lastNameValue,emailValue,genderValue,userNumberValue,chooseDayValue,subjectValue,
                 terminatiePath, userAddressValue,stateinputValue,cityinputValue, activitatiValue);
 

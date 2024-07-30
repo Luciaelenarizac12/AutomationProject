@@ -9,33 +9,23 @@ import org.testng.annotations.Test;
 import pages.AlertPage;
 import pages.HomePage;
 import pages.BrowserWindowPage;
+import sharedData.SharedData;
 
 import java.time.Duration;
 
-public class AlertTest {
-    public WebDriver driver;
+public class AlertTest extends SharedData {
 
     @Test
     public void metodaTest(){
 
-        //trebuie sa deschidem un browser:
-        driver = new ChromeDriver();
-
-        //trebuie sa accesam un url:
-
-        driver.get("https://demoqa.com/");
-
-        //definim un wait implicit -asta ramane
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
         //definim un obiect de tip alertMethods ca sa apelam metodele generale din clasa:
-        HomePage homePage =new HomePage(driver);
+        HomePage homePage =new HomePage(getDriver());
         homePage.navigateToHomePage();
 
-        BrowserWindowPage browserWindowPage=new BrowserWindowPage(driver);
+        BrowserWindowPage browserWindowPage=new BrowserWindowPage(getDriver());
         browserWindowPage.navigateToAlerts();
 
-        AlertPage alertPage=new AlertPage(driver);
+        AlertPage alertPage=new AlertPage(getDriver());
         alertPage.firstButton();
         alertPage.secondButton();
         alertPage.thirdButton();

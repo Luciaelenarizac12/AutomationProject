@@ -1,40 +1,28 @@
 package pages;
 
-import helperMethods.AlertMethods;
-import helperMethods.ElementsMethods;
-import helperMethods.PageMethods;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class AlertPage {
-    public WebDriver driver; //avem nevoie de un driver
-    public ElementsMethods elementMethods;
-    public PageMethods pageMethods;
-    public AlertMethods alertMethods;
+public class AlertPage extends BasePage {
+
 
     public AlertPage(WebDriver driver) {
-        this.driver = driver;
-        pageMethods = new PageMethods(driver);
-        elementMethods = new ElementsMethods (driver);
-        alertMethods=new AlertMethods(driver);
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     @FindBy(id = "alertButton")
-    WebElement firstAlertButton;
+    private WebElement firstAlertButton;
 
     @FindBy(id="timerAlertButton")
-    WebElement alertWait;
+    private WebElement alertWait;
 
     @FindBy(id = "confirmButton")
-    WebElement thirdAlertButton;
+    private WebElement thirdAlertButton;
 
     @FindBy(id = "promtButton")
-    WebElement forthAlertButton;
-
+    private WebElement forthAlertButton;
 
     public void firstButton(){
         elementMethods.clickElement(firstAlertButton);

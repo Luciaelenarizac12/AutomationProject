@@ -1,32 +1,22 @@
 package pages;
 
-import helperMethods.ElementsMethods;
-import helperMethods.PageMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-    public WebDriver driver; //avem nevoie de un driver
-    public ElementsMethods elementMethods;
-    public PageMethods pageMethods;
-
-
-    public HomePage(WebDriver driver) { //constructorul
-        this.driver = driver;
-        pageMethods = new PageMethods(driver);
-        elementMethods = new ElementsMethods (driver);
-        PageFactory.initElements(driver, this);
+public class HomePage extends BasePage{
+    public HomePage(WebDriver driver) {
+        super(driver);
     }
     @FindBy(xpath = "//h5[text()='Alerts, Frame & Windows']") //anotare gen porecla
-    public WebElement formMenu; //am transformat-o in variabila globala
+    private WebElement formMenu; //am transformat-o in variabila globala
 
     @FindBy(xpath = "//h5[text()='Forms']")
-    WebElement formsMenu;
+    private WebElement formsMenu;
 
     @FindBy(xpath = "//h5[text()='Elements']")
-    WebElement elementMenu;
+    private WebElement elementMenu;
+
 
     public void navigateToHomePage(){
         pageMethods.scrollPage(0,350);
