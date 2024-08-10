@@ -16,7 +16,7 @@ public class AlertMethods {
 
     //facem o metoda pentru wait explicit:
     public void waitForAlert (){
-        WebDriverWait webDriverWait= new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait webDriverWait= new WebDriverWait(driver, Duration.ofSeconds(15));
         webDriverWait.until(ExpectedConditions.alertIsPresent());
 
     }

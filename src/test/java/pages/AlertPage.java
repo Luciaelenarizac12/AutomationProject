@@ -26,14 +26,14 @@ public class AlertPage extends BasePage {
     private WebElement forthAlertButton;
 
     public void firstButton(){
-        elementMethods.clickElement(firstAlertButton);
+        elementMethods.clickJSElement(firstAlertButton);
         LoggerUtility.info("The user clicks on the alertOK button");
         alertMethods.acceptAlert();
         LoggerUtility.info("The user interacts with the alertOK successfully");
     }
 
     public void secondButton(){
-        elementMethods.clickElement(alertWait);
+        elementMethods.clickJSElement(alertWait);
         LoggerUtility.info("The user interacts with the 2nd button successfully");
         alertMethods.waitForAlert();
         LoggerUtility.info("The user is waiting for the alert to appear");
@@ -45,7 +45,7 @@ public class AlertPage extends BasePage {
     }
 
     public void thirdButton(){
-        elementMethods.clickElement(thirdAlertButton);
+        elementMethods.clickJSElement(thirdAlertButton);
         LoggerUtility.info("The user interacts with the 3rd button successfully");
         alertMethods.dismissAlert();
         LoggerUtility.info("The user clicked on cancel");
@@ -53,7 +53,7 @@ public class AlertPage extends BasePage {
     }
 
     public void forthButton(){
-        elementMethods.clickElement(forthAlertButton);
+        elementMethods.clickJSElement(forthAlertButton);
         LoggerUtility.info("The user interacts with the 4th button successfully");
         alertMethods.fillAlert("Lucia");
         LoggerUtility.info("The user submits the text in the prompt");
