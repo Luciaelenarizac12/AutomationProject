@@ -1,5 +1,6 @@
 package pages;
 
+import loggerUtility.LoggerUtility;
 import objectData.PracticeFormObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -79,8 +80,11 @@ public class PracticeFormPage extends  BasePage{
 
     public void fillEntireForm(PracticeFormObject testData){
         elementMethods.fillElement(firstName, testData.getFirstNameValue());
+        LoggerUtility.info("The user filled in the firstnameelement with the value: " + testData.getFirstNameValue());
         elementMethods.fillElement(lastName,testData.getLastNameValue());
+        LoggerUtility.info("The user filled in the lastnameelement with the value: " + testData.getLastNameValue());
         elementMethods.fillElement(email,testData.getEmailValue());
+        LoggerUtility.info("The user filled in the emailelement with the value: " + testData.getEmailValue());
 //        String genderValue = "Other";// e ca si cum deja am bifat din cele 3 una, de asta mi-am facut o variabila in care sa stochez optiunea
         switch (testData.getGenderValue()) {
             case "Male":
@@ -94,11 +98,18 @@ public class PracticeFormPage extends  BasePage{
                 break;
 
         }
+        LoggerUtility.info("The user selected the gender: " + testData.getGenderValue());
+
         elementMethods.fillElement(userNumber, testData.getUserNumberValue());
+        LoggerUtility.info("The user filled in the usernumberelement with the value: " + testData.getUserNumberValue());
         pageMethods.scrollPage(0,360);
+        LoggerUtility.info("The user scrolled down the page");
         elementMethods.clickElement(dateOfBirthElement);
+        LoggerUtility.info("The user clicked to select the birthdate");
         elementMethods.selectByTextElement(dateOfBirthMonthElement, "January");
+        LoggerUtility.info("The user selected the month January");
         elementMethods.selectByValue(dateOfBirthYearElement, "2100");
+        LoggerUtility.info("The user selected the year 2100");
 
         for (Integer j=0; j<weekDayElements.size(); j++){
             if(weekDayElements.get(j).getText().equals(testData.getChooseDayValue())){
@@ -106,9 +117,12 @@ public class PracticeFormPage extends  BasePage{
                 break;
             }
         }
+        LoggerUtility.info("The user submitted the birthdate of: " + testData.getChooseDayValue());
 
         elementMethods.fillElement(subjects,testData.getSubjectValue());
+        LoggerUtility.info("The user selected the subjects: " + testData.getSubjectValue());
         elementMethods.pressElement(subjects, Keys.ENTER);
+        LoggerUtility.info("The user submitted their chosen subjects");
 
 
         for (Integer i = 0; i < listaActivitati.size(); i++) {
@@ -119,36 +133,60 @@ public class PracticeFormPage extends  BasePage{
             }
 
         }
+        LoggerUtility.info("The user selected the hobbies: " + testData.getActivitatiValue());
 
         File file = new File("src/test/resources/" + testData.getTerminatiePath());
         chooseFile.sendKeys(file.getAbsolutePath());
+        LoggerUtility.info("The user uploaded a file");
         elementMethods.fillElement(userAddress,testData.getUserAddressValue());
+        LoggerUtility.info("The user submitted for currentaddress element the value: " + testData.getUserAddressValue());
         pageMethods.scrollPage(0,360);
+        LoggerUtility.info("The user scrolled down the page");
         elementMethods.clickElement(stateElement);
+        LoggerUtility.info("The user clicked to select the State");
         pageMethods.scrollPage(0,360);
+        LoggerUtility.info("The user scrolled down the page");
         elementMethods.fillElement(stateinputElement,testData.getStateinputValue());
+        LoggerUtility.info("The user chose the following state: " + testData.getStateinputValue());
         elementMethods.pressElement(stateinputElement,Keys.ENTER);
+        LoggerUtility.info("The user submitted their chosen state");
         pageMethods.scrollPage(0,360);
+        LoggerUtility.info("The user scrolled down the page");
         elementMethods.clickElement(cityElement);
+        LoggerUtility.info("The user submitted their chosen city");
         elementMethods.fillElement(cityinputElement, testData.getCityinputValue());
+        LoggerUtility.info("The user chose the following city: " + testData.getCityinputValue());
         elementMethods.pressElement(cityinputElement,Keys.ENTER);
+        LoggerUtility.info("The user submitted their chosen city");
         pageMethods.scrollPage(0,360);
+        LoggerUtility.info("The user scrolled down the page");
         elementMethods.clickElement(submitElement);
+        LoggerUtility.info("The user submitted the form");
     }
 
     public void validateEntireForm(PracticeFormObject testData){
 
         Assert.assertEquals(confimationSurvey.getText(), "Thanks for submitting the form");
+        LoggerUtility.info("The user validates the presence of " + confimationSurvey.getText());
         Assert.assertEquals(tableValues.get(0).getText(), "Student Name" +" "+ testData.getFirstNameValue()+" "+testData.getLastNameValue()); //validam stanga-dreapta
+        LoggerUtility.info("The user validates the presence of " + testData.getFirstNameValue() + " " + testData.getLastNameValue());
         Assert.assertEquals(tableValues.get(1).getText(), "Student Email" +" "+ testData.getEmailValue());
+        LoggerUtility.info("The user validates the presence of " + testData.getEmailValue());
         Assert.assertEquals(tableValues.get(2).getText(), "Gender" +" "+ testData.getGenderValue());
+        LoggerUtility.info("The user validates the presence of " + testData.getGenderValue());
         Assert.assertEquals(tableValues.get(3).getText(), "Mobile" +" "+ testData.getUserNumberValue());
+        LoggerUtility.info("The user validates the presence of " + testData.getUserNumberValue());
         Assert.assertEquals(tableValues.get(5).getText(), "Subjects" +" "+ testData.getSubjectValue());
+        LoggerUtility.info("The user validates the presence of " + testData.getSubjectValue());
         String expectedHobbiesText= "Hobbies "+ String.join(", ", testData.getActivitatiValue());
         Assert.assertEquals(tableValues.get(6).getText(), expectedHobbiesText);
+        LoggerUtility.info("The user validates the presence of " + expectedHobbiesText);
         Assert.assertEquals(tableValues.get(7).getText(), "Picture" +" "+ testData.getTerminatiePath());
+        LoggerUtility.info("The user validates the presence of " + testData.getTerminatiePath());
         Assert.assertEquals(tableValues.get(8).getText(), "Address" +" "+ testData.getUserAddressValue());
+        LoggerUtility.info("The user validates the presence of " + testData.getUserAddressValue());
         Assert.assertEquals(tableValues.get(9).getText(), "State and City" +" "+ testData.getStateinputValue() +" "+testData.getCityinputValue());
+        LoggerUtility.info("The user validates the presence of " + testData.getStateinputValue() + testData.getCityinputValue());
     }
 
 }
