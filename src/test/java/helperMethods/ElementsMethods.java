@@ -1,5 +1,6 @@
 package helperMethods;
 
+import lombok.AllArgsConstructor;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,14 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@AllArgsConstructor
 public class ElementsMethods {
 
     public WebDriver driver;
 
-    //Constructor
-    public ElementsMethods (WebDriver driver){
-        this.driver=driver;
-    }
 
     //metode generale pentru interactiunea cu elemente
 

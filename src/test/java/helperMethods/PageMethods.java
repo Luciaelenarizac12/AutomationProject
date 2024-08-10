@@ -1,15 +1,12 @@
 package helperMethods;
+import lombok.AllArgsConstructor;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+@AllArgsConstructor
 public class PageMethods {
 
     public WebDriver driver;
-
-    //Constructor
-    public PageMethods (WebDriver driver){
-        this.driver=driver;
-    }
 
     public void scrollPage(Integer x, Integer y) {
 
