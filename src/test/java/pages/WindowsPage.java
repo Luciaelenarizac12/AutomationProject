@@ -21,7 +21,7 @@ public class WindowsPage extends BasePage{
 
             pageMethods.scrollPage(0, 150);
             LoggerUtility.info("The user scrolled down the page");
-            elementMethods.clickElement(newTabButton);
+            elementMethods.clickJSElement(newTabButton);
             LoggerUtility.info("The user clicked on new tab button");
             System.out.println(driver.getCurrentUrl());  //ne afiseaza url ul paginii curente pe care ne aflam
             windowMethods.switchSpecificTab(1);
