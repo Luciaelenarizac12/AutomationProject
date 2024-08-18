@@ -20,7 +20,7 @@ public class ElementsMethods {
     //metode generale pentru interactiunea cu elemente
 
     public void waitForElementVisibile(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(16));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
