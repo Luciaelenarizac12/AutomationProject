@@ -37,7 +37,7 @@ public class WindowsPage extends BasePage{
         public void interactWithTheSecondTab(){
             pageMethods.scrollPage(0,150);
             LoggerUtility.info("The user scrolled down the page");
-            newWindow.click();
+            elementMethods.clickJSElement(newWindow);
             LoggerUtility.info("The user performed a click");
             windowMethods.switchSpecificTab(1);
             LoggerUtility.info("The user switched to another tab");
